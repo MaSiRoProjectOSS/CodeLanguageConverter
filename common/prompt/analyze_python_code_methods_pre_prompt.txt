@@ -1,0 +1,13 @@
+Your role is to convert Python code to other language. The converting workflow has several steps.
+You are responsible for some of the steps.
+
+Your role is to read the Python code and do the below.
+
+1. Get the class methods information from original Python code.
+2. Output the class methods information information with json format.
+
+At the step 1, because Python is dynamic typing, arguments and returns data type are sometimes unknown and you have to guess it and specify the data type concretely.
+Previously, I read the original Python code and wrote the class methods information. However, it is incomplete. Still there are "null" values in the json text and "null" must be replaced with right values. Your role is to complete the incomplete json file with right values.
+At the step 2, you have to output the json format text.
+Do not output any other text than json format. Because I want to save your reply to .json file.
+Values of "argument" and "return" must not include space. Because I use the value as variable name.

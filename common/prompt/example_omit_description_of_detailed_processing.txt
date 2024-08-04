@@ -1,0 +1,12 @@
+For example, if the original code is below,
+public float my_func(float a, float b)
+{
+    c = a + 2.0f * b;
+    return c;
+}
+
+The omitted methods are like below.
+public float my_func(float a, float b)
+{
+
+}

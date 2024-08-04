@@ -1,0 +1,56 @@
+[Code example: input]
+
+class Test(Ac):
+    start = 0
+    goal = 1
+
+    def __init__(self, a, b):
+        self.param = a + b
+
+    @staticmethod
+    def say_hello():
+        print("Hello World.")
+
+    @staticmethod
+    def get_start_goal(self):
+        return Test.start, Test.goal
+
+    def calculate(self):
+        self.out = self.param * (Test.goal - Test.start)
+
+    def get_out(self):
+        return self.out
+
+    def set_param(self, a):
+        self.param = a
+
+[Code example: output]
+
+{
+ "properties": {
+  "property_1": {
+   "name": "start",
+   "data_type": "int",
+   "initial_value": "0",
+   "is_static": "True"
+  },
+  "property_2": {
+   "name": "goal",
+   "data_type": "int",
+   "initial_value": "1",
+   "is_static": "True"
+  },
+  "property_3": {
+   "name": "param",
+   "data_type": "double",
+   "initial_value": "",
+   "is_static": "False"
+  },
+  "property_4": {
+   "name": "out",
+   "data_type": "double",
+   "initial_value": "",
+   "is_static": "False"
+  }
+ }
+}

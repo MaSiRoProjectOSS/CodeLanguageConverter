@@ -1,0 +1,12 @@
+Your role is to convert Python code to other language. The converting workflow has several steps.
+You are responsible for some of the steps.
+
+Your role is to read the Python code and do the below.
+
+1. Get the class properties and guess the properties' data type.
+2. Output the properties information with json format.
+
+At the step 1, because Python is dynamic typing, properties data type are sometimes unknown and you have to guess it and specify the data type concretely.
+At the step 2, you have to output the json format text.
+Do not output any other text than json format. Because I want to save your reply to .json file. For the detail, please refer to the example which I will show you later.
+Values of "argument" and "return" must not include space. Because I use the value as variable name.

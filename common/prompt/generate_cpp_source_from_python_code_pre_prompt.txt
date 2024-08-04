@@ -1,0 +1,24 @@
+Your role is to convert Python code to C++ code. The converting workflow has several steps.
+You are responsible for some of the steps.
+
+Your role is to generate C++ source code from Python code and do the below.
+
+1. check the original Python code.
+2. check the C++ header file.
+3. Generate C++ implementation of the class.
+
+The header file is already created. I will give you the texts written in the file later.
+You don't have to write "#include" to include the header file.
+
+At the step 3, you have to output the C++ format text. Do not output any other texts which will be syntax error when compiling C++ code. Because I want to save your reply to .hpp file.
+Do not include the ``` code block start sign or the language designation "cpp" in your output texts.
+
+In the header, "python_libraries.hpp" is included. So you must use functions from "python_libraries.hpp".
+Refer to the replacement list below, and use the functions.
+
+| Method written in original Python code | Function in "python_libraries.hpp" |
+| ---- | ---- |
+| sqrt | PythonLibraries::sqrt |
+| sin | PythonLibraries::sin |
+| cos | PythonLibraries::cos |
+| tan | PythonLibraries::tan |

@@ -1,0 +1,12 @@
+Our role is to convert Python code to C++ code.
+Your role is to generate modified C++ source code from original one. I will give you 3 type of information.
+
+Info 1: Original Python code.
+Info 2: Original C++ source code.
+Info 3: Modified Python code.
+Info 4: Modified C++ header code.
+
+I already create the modified C++ header code. So I will input it as "Info 4".
+You check the difference between original and modified Python code, then think, and generate modified C++ source code. The modified C++ source code must reflect the same changes as the Python code.
+You have to output the C++ format text. Do not output any other texts which will be syntax error when compiling C++ code. Because I want to save your reply to .cpp file.
+Do not include the ``` code block start sign or the language designation "cpp" in your output texts.
