@@ -25,8 +25,27 @@ class CommonParameter:
 
     with open('./common/prompt/generate_cpp_header_from_python_code_pre_prompt.txt', 'r', encoding='utf-8') as file:
         generate_cpp_header_from_python_code_pre_prompt = file.read()
+
     with open('./common/prompt/generate_cpp_source_from_python_code_pre_prompt.txt', 'r', encoding='utf-8') as file:
         generate_cpp_source_from_python_code_pre_prompt = file.read()
+
+    # add about list in python
+    with open('./common/prompt/explain_how_to_handle_python_list_in_cpp.md', 'r', encoding='utf-8') as file:
+        explain_how_to_handle_python_list_in_cpp = file.read()
+
+    generate_cpp_header_from_python_code_pre_prompt += "\n" + \
+        explain_how_to_handle_python_list_in_cpp
+    generate_cpp_source_from_python_code_pre_prompt += "\n" + \
+        explain_how_to_handle_python_list_in_cpp
+    # end
+
+    # add about export libraries
+    with open('./common/prompt/explain_about_export_libraries_python_math.md', 'r', encoding='utf-8') as file:
+        explain_about_export_libraries_python_math = file.read()
+
+    generate_cpp_source_from_python_code_pre_prompt += "\n" + \
+        explain_about_export_libraries_python_math
+    # end
 
     with open('./common/prompt/generate_cpp_header_from_cs_code_pre_prompt.txt', 'r', encoding='utf-8') as file:
         generate_cpp_header_from_cs_code_pre_prompt = file.read()
@@ -84,10 +103,11 @@ class CommonParameter:
     python_properties_structure_info_file_name = "python_properties_structure_info.json"
     python_import_info_file_name = "python_import_info.txt"
 
-    python_export_libraries_text = "#include \"python_libraries.hpp\""
-    python_export_libraries_link_text = "python_libraries.cpp"
+    python_export_libraries_text = "#include <vector>" + "\n" \
+        + "#include \"python_math.hpp\""
+    python_export_libraries_link_text = "python_math.cpp"
     python_export_libraries_file_names = [
-        "python_libraries.hpp", "python_libraries.cpp"]
+        "python_math.hpp", "python_math.cpp"]
     python_export_libraries_path = "export_libraries/"
 
     @staticmethod

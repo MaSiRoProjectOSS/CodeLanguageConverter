@@ -46,18 +46,22 @@ class PythonCodeAnalyzer(CodeAnalyzer):
         return self.import_info
 
     def generate_save_class_properties_info_from_code(self):
+
+        self.class_properties_structure_info_file_path = self.save_folder_path + self.file_name + "_" \
+            + CommonParameter.python_properties_structure_info_file_name
+
         for convert_count in range(0, self.generate_class_info_iteration_max):
             json_decode_error = False
             self.generate_class_properties_info_from_code()
 
-            self.class_properties_structure_info_file_path = self.save_folder_path + self.file_name + "_" \
-                + CommonParameter.python_properties_structure_info_file_name
+            class_properties_structure_info = self.parser.get_class_properties_structure_info()
+
             with open(self.class_properties_structure_info_file_path, 'w') as file:
-                file.write(self.class_properties_structure_info)
+                file.write(class_properties_structure_info)
 
             try:
                 self.parser.add_class_properties_info(
-                    self.class_properties_structure_info)
+                    class_properties_structure_info)
             except json.JSONDecodeError as e:
                 print(
                     f"Class methods info generation is failed. Count: {convert_count}")
@@ -67,10 +71,11 @@ class PythonCodeAnalyzer(CodeAnalyzer):
                 break
 
     def generate_class_properties_info_from_code(self):
-        self.class_properties_structure_info = super().send_and_receive_ai_client_message(
+        info = super().send_and_receive_ai_client_message(
             self.properties_communicator_id, self.original_code)
-        self.class_properties_structure_info = self.eliminate_comment_from_json_text(
-            self.class_properties_structure_info)
+        info = self.eliminate_comment_from_json_text(info)
+
+        self.parser.set_class_properties_structure_info(info)
 
     def generate_class_methods_info_from_parser(self):
         outline_class_info = self.parser.get_class_info()
@@ -127,19 +132,21 @@ class PythonCodeAnalyzer(CodeAnalyzer):
 
     def generate_save_class_methods_info_from_code(self):
 
+        self.class_methods_structure_info_file_path = self.save_folder_path + self.file_name + "_" \
+            + CommonParameter.python_methods_structure_info_file_name
+
         for convert_count in range(0, self.generate_class_info_iteration_max):
             json_decode_error = False
             self.generate_class_methods_info_from_code()
 
-            self.class_methods_structure_info_file_path = self.save_folder_path + self.file_name + "_" \
-                + CommonParameter.python_methods_structure_info_file_name
+            class_methods_structure_info = self.parser.get_class_methods_structure_info()
 
             with open(self.class_methods_structure_info_file_path, 'w') as file:
-                file.write(self.class_methods_structure_info)
+                file.write(class_methods_structure_info)
 
             try:
                 self.parser.fill_blanks_in_class_methods_info(
-                    self.class_methods_structure_info)
+                    class_methods_structure_info)
             except json.JSONDecodeError as e:
                 print(
                     f"Class methods info generation is failed. Count: {convert_count}")
@@ -156,15 +163,16 @@ class PythonCodeAnalyzer(CodeAnalyzer):
             "The incomplete methods json text is below." + "\n" + \
             outline_methods_json
 
-        self.class_methods_structure_info = super().send_and_receive_ai_client_message(
+        info = super().send_and_receive_ai_client_message(
             self.methods_communicator_id, message)
-        self.class_methods_structure_info = self.eliminate_comment_from_json_text(
-            self.class_methods_structure_info)
+        info = self.eliminate_comment_from_json_text(info)
+
+        self.parser.set_class_methods_structure_info(info)
 
     def get_class_structure_info(self):
         class_structure_info = "[Class properties information]" + "\n" + \
-            self.get_class_properties_structure_info() + "\n" + "\n" + \
+            self.parser.get_class_properties_structure_info() + "\n" + "\n" + \
             "[Class methods information]" + "\n" + \
-            self.get_class_methods_structure_info()
+            self.parser.get_class_methods_structure_info()
 
         return class_structure_info

@@ -10,6 +10,7 @@ class CodeParser:
         self.original_code_lines = original_code.split("\n")
         self.class_info = None
         self.class_methods_structure_info = ""
+        self.class_properties_structure_info = ""
 
     def create_class_info(self, name, methods, properties, super_class_names):
         class_info = ClassInfo()
@@ -219,8 +220,14 @@ class CodeParser:
                 name, data_type, initial_value, is_static, is_public)
             self.add_property_info_to_self(properties_info)
 
-    def get_class_methods_info(self):
+    def get_class_methods_structure_info(self):
         return self.class_methods_structure_info
 
-    def get_class_properties_info(self):
+    def set_class_methods_structure_info(self, class_methods_structure_info):
+        self.class_methods_structure_info = class_methods_structure_info
+
+    def get_class_properties_structure_info(self):
         return self.class_properties_structure_info
+
+    def set_class_properties_structure_info(self, class_properties_structure_info):
+        self.class_properties_structure_info = class_properties_structure_info

@@ -1,4 +1,14 @@
 __pycache__/
 /work
 .vscode/
+.vs/
 *.pyc
+bin/
+obj/
+TestResults/
+*.vcxproj.user
+*.sdf
+*.suo
+icph/
+Debug/
+Release/

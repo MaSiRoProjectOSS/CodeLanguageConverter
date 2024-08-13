@@ -14,8 +14,6 @@ class CodeAnalyzer(Communicator):
         self.parser = None
         self.class_properties_structure_info_file_path = ""
         self.class_methods_structure_info_file_path = ""
-        self.class_properties_structure_info = ""
-        self.class_methods_structure_info = ""
 
         self.dependency_analyzer = dependency_analyzer
 
@@ -70,9 +68,7 @@ class CodeAnalyzer(Communicator):
         return self.dependency_analyzer.get_node_link_data()
 
     def get_class_properties_structure_info(self):
-        self.class_properties_structure_info = self.parser.get_class_properties_info()
-        return self.class_properties_structure_info
+        return self.parser.get_class_properties_info()
 
     def get_class_methods_structure_info(self):
-        self.class_methods_structure_info = self.parser.get_class_methods_info()
-        return self.class_methods_structure_info
+        return self.parser.get_class_methods_info()
